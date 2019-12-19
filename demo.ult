@@ -1,0 +1,14 @@
+mov "Hello!_What_is_your_name?_" $PROMPT
+mov "No!_Not_You!" $badans
+mov "Yes!_More_open_source!" $goodans
+in $PROMPT $ans
+mov "Hi, " $1
+if $ans is "Bill_Gates" goto 11
+if $ans is "Richard_Stallman" goto 13
+join $1 $ans $final
+out $final
+end
+out $badans
+end
+out $goodans
+end

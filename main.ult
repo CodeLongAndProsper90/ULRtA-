@@ -1,0 +1,3 @@
+mov 1 $1
+inc $1
+dump
