@@ -3,12 +3,16 @@ mov "No!_Not_You!" $badans
 mov "Yes!_More_open_source!" $goodans
 in $PROMPT $ans
 mov "Hi, " $1
-if $ans is "Bill_Gates" goto 11
-if $ans is "Richard_Stallman" goto 13
+if $ans is "Bill_Gates" goto .BAD
+if $ans is "Richard_Stallman" goto .GOOD
 join $1 $ans $final
 out $final
 end
+
+.BAD
 out $badans
 end
+
+.GOOD
 out $goodans
 end
