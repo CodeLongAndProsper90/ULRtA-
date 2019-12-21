@@ -81,7 +81,16 @@ while p < len(source):
 		continue
 	for item in i:
 		i[i.index(item)] = item.rstrip()
-
+        if i[0] == "@include":
+            line = source[p]
+            f = open(reg(i[1]), 'r')
+            data = f.read().rstrip()
+            f.close()
+            header = data.split('\n')
+            for item in header:
+                    header[header.index(item)] = item.rstrip()
+            source = header + source 
+            p+=len(header)-1
 	if i[0] == 'mov':
 
 		if i[1].startswith("\""):
@@ -166,5 +175,6 @@ while p < len(source):
 		confirm(type(reg(i[1])),int, error='MathError', msg="Cannot decrement type <String>")
 		confirm(i[1].startswith('$'), True, error='RegisterError', msg='Attempting to write to a read-only register. Register=({})'.format(i[1]))
 		regs[i[1]] = reg(i[1])+1
-	
+
+#At this point, all that is left to do is increase the code pointer.	
 	p += 1
