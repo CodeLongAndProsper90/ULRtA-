@@ -16,7 +16,7 @@ i = []
 def reg(var):
 	if var.startswith('$'):
 		if var not in regs:
-			throw("RegisterError", f"Register {var.replace('$','',1)} does not exist or has not been initialized in the current context! {p+1}")
+			throw("RegisterError", "Register {} does not exist or has not been initialized in the current context! {}".format(var.replace('$','',1),p+1))
 		else:
 			return (regs[var])
 	elif var.startswith("\""):
@@ -34,13 +34,12 @@ def reg(var):
 
 
 def throw(error, msg=''):
-
-	print(f"\n\033[1m{Fore.GREEN}{p+1}{Fore.RESET} :: {Fore.RED} @{error}! {msg}{Style.RESET_ALL}\n")
+	print("\n\033[1m{}{}{} :: {} @{}! {}{}\n".format(Fore.GREEN,p+1,Fore.RESET,Fore.RED,error,msg,Style.RESET_ALL))
 	exit()
 
 
 def warn(warning, msg=''):
-	print(f"\n\033[1m{Fore.GREEN}{p+1} {Fore.RESET}:: {Fore.LIGHTYELLOW_EX}{warning}! {msg}{Style.RESET_ALL}\n")
+    print("\n\033[1m{}{} {}:: {}{}! {}{}\n".format(Fore.GREEN,p+1,Fore.RESET,Fore.LIGHTYELLOW_EX,warning,msg,Style.RESET_ALL))
 
 
 def confirm(foo, bar, ret=False, error='HaltError', msg='Unsure if arguments are the same!'):
@@ -160,12 +159,12 @@ while p < len(source):
 		
 		p= left_point
 	elif i[0] == 'inc':
-		confirm(type(reg(i[1])),int, error='MathError', msg=f"Cannot increment type <String>")
-		confirm(i[1].startswith('$'), True, error='RegisterError', msg=f'Attempting to write to a read-only register. Register=({i[1]})')
+		confirm(type(reg(i[1])),int, error='MathError', msg="Cannot increment type <String>")
+		confirm(i[1].startswith('$'), True, error='RegisterError', msg='Attempting to write to a read-only register. Register=({})'.format(i[1]))
 		regs[i[1]] = reg(i[1])+1
 	elif i[0] == 'dec':
-		confirm(type(reg(i[1])),int, error='MathError', msg=f"Cannot decrement type <String>")
-		confirm(i[1].startswith('$'), True, error='RegisterError', msg=f'Attempting to write to a read-only register. Register=({i[1]})')
+		confirm(type(reg(i[1])),int, error='MathError', msg="Cannot decrement type <String>")
+		confirm(i[1].startswith('$'), True, error='RegisterError', msg='Attempting to write to a read-only register. Register=({})'.format(i[1]))
 		regs[i[1]] = reg(i[1])+1
 	
 	p += 1
