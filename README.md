@@ -94,7 +94,7 @@ Example: dump
 
 ## How to label
 
-To make a label for a goto, or and if, just prefix it with a '.'
+To make a label for a goto or if, just prefix it with a '.'
 
 Syntax: .\[label\]
 
