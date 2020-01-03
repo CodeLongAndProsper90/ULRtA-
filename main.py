@@ -87,15 +87,24 @@ while p < len(source):
     for item in i:
         i[i.index(item)] = item.rstrip()
     if i[0] == "@include":
-        line = source[p]
         f = open(reg(i[1]), 'r')
+        print('Opened file')
         data = f.read().rstrip()
+        print('Data is: {}'.format(data))
         f.close()
+        print("File closed")
+
         header = data.split('\n')
+        print("Header is: {}".format(header))
         for item in header:
+            print("Removing whitespace from: {}".format(item))
             header[header.index(item)] = item.rstrip()
+        print("Adding header to source")
         source = header + source 
-        p+=len(header)-1
+        print("Source is: {}".format(source))
+        print("Moving pointer to: {}".format(p+len(header)+1))
+        p+=len(header)+1
+        continue
     if i[0] == 'mov':
 
         if i[1].startswith("\""):
