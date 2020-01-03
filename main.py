@@ -33,7 +33,7 @@ def reg(var):
         pass
 
     elif var.startswith('.'):
-        return str(var)
+        return source.index(str(var))
     else:    
         return int(var)
 
@@ -88,21 +88,13 @@ while p < len(source):
         i[i.index(item)] = item.rstrip()
     if i[0] == "@include":
         f = open(reg(i[1]), 'r')
-        print('Opened file')
         data = f.read().rstrip()
-        print('Data is: {}'.format(data))
         f.close()
-        print("File closed")
 
         header = data.split('\n')
-        print("Header is: {}".format(header))
         for item in header:
-            print("Removing whitespace from: {}".format(item))
             header[header.index(item)] = item.rstrip()
-        print("Adding header to source")
         source = header + source 
-        print("Source is: {}".format(source))
-        print("Moving pointer to: {}".format(p+len(header)+1))
         p+=len(header)+1
         continue
     if i[0] == 'mov':
@@ -132,7 +124,7 @@ while p < len(source):
         regs[i[3]] = math(reg[i[1]], reg(i[2]), '/')
     elif i[0] == 'goto':
         if not p == reg(i[1])-1:
-            p = int(reg(i[1])) - 1
+            p = reg(i[1]) - 1
         else:
             throw('LoopWarning','Goto results in an endless loop!')
             continue
