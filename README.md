@@ -92,9 +92,15 @@ Syntax: dump
 
 Example: dump
 
+## join
+
+Joins two strings together, and stores the result in the third register
+Syntax: join \[string\] \[string\] \[register\]
+Example: join "Hi, " $NAME $RESPONSE 
+
 ## How to label
 
-To make a label for a goto, or and if, just prefix it with a '.'
+To make a label for a goto or if, just prefix it with a '.'
 
 Syntax: .\[label\]
 
