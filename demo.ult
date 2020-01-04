@@ -1,10 +1,10 @@
-mov "Hello!_What_is_your_name?_" $PROMPT
-mov "No!_Not_You!" $badans
-mov "Yes!_More_open_source!" $goodans
+mov "Hello! What is your name? " $PROMPT
+mov "No! Not You!" $badans
+mov "Yes! More open source!" $goodans
 in $PROMPT $ans
 mov "Hi, " $1
-if $ans is "Bill_Gates" goto .BAD
-if $ans is "Richard_Stallman" goto .GOOD
+if $ans is "Bill Gates" goto .BAD
+if $ans is "Richard Stallman" goto .GOOD
 join $1 $ans $final
 out $final
 end
