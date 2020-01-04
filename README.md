@@ -98,6 +98,19 @@ Joins two strings together, and stores the result in the third register
 Syntax: join \[string\] \[string\] \[register\]
 Example: join "Hi, " $NAME $RESPONSE 
 
+## int
+
+Converts the specified register to an int, and raises ConversionError if it fails
+Syntax: int \[register\]
+Example: int $INPUT
+
+## str
+
+
+Converts the specified register to an string, and raises ConversionError if it fails
+Syntax: str \[register\]
+Example: str $INPUT
+
 ## How to label
 
 To make a label for a goto or if, just prefix it with a '.'
