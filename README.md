@@ -1,6 +1,6 @@
 # ULRtA-
 A simple asm-like language with advanced features.
-
+[![Run on Repl.it](https://repl.it/badge/github/CodeLongAndProsper90/ULRtA-)](https://repl.it/github/CodeLongAndProsper90/ULRtA-)
 # Commands:
 
 ## in 
